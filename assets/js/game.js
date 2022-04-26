@@ -1,27 +1,23 @@
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+//         * Fight all enemy-robots
+//         * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-if (playerHealth > 0) {
-    console.log("Your player is still alive!");
-}
-
-if (playerHealth === 0) {
-    console.log("This will not run.");
-  } 
-  else {
-    console.log("This will run instead.");
-  }
-
 // You can also log multiple values at once like this
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+var fight = function(enemyName) {
   window.alert("Welcome to Robot Gladiators!");
 
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
@@ -48,6 +44,16 @@ playerHealth = playerHealth - enemyAttack;
   console.log(
       playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
   );
+  if (playerHealth > 0) {
+    console.log("Your player is still alive!");
+}
+
+if (playerHealth === 0) {
+    console.log("This will not run.");
+  } 
+  else {
+    console.log("This will run instead.");
+  }
 
   if (enemyHealth <= 0) {
       window.alert(enemyName + " has died!");
@@ -71,4 +77,6 @@ else if (promptFight === "skip" || promptFight === "SKIP") {
 }
 }
 
-fight();
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
