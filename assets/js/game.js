@@ -18,13 +18,13 @@ var fight = function(enemyName) {
       if (confirmSkip) {
         window.alert(playerName + ' has decided to skip this fight. Goodbye!');
 
-        playerMoney = playerMoney - 10;
+        playerMoney = Math.max(0, playerMoney - 10);
         console.log("playerMoney", playerMoney);
         break;
       }
     }
 
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
     );
@@ -39,7 +39,7 @@ var fight = function(enemyName) {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
     }
 
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, playerHealth - enemyAttack);
     console.log(
       enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
     );
@@ -66,7 +66,7 @@ var startGame = function() {
     
     var pickedEnemyName = enemyNames[i];
     
-    enemyHealth = 50;
+    enemyHealth = Math.floor(Math.random() * 21) + 40;
     
     fight(pickedEnemyName);
 
